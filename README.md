@@ -21,9 +21,9 @@ I presume it can be adapted to VestaCP after small modifications.
 
 ## Tested with
 
-- [X] HestiaCP 1.1.1
-- [X] Ubuntu 18.04
-- [X] Python 3.6.9
+- [X] HestiaCP 1.9.3
+- [X] Ubuntu 24.04.2 LTS
+- [X] Python 3.12.3
 
 
 If you have tested it with a different version or different distro, feel free to contact me to provide feedback.
@@ -40,13 +40,30 @@ python3 -m pip install --upgrade pip
 ```
 
 3. Download the templates to the correct location:
-
+```bash
+apt install git
+git clone https://github.com/Muellerson/hestiacp-python-templates.git
+cd hestiacp-python-templates/
+```
 - Apache2 templates goes into `/usr/local/hestia/data/templates/web/apache2/php-fpm/`
-- Chage he permissions to `.sh` files using the command `chmod +x *.sh` in the `/usr/local/hestia/data/templates/web/apache2/php-fpm/` folder.
+```bash
+mv apache2/php-fpm/* /usr/local/hestia/data/templates/web/apache2/php-fpm/
+```
+- Change the permissions to `.sh` files using the command `chmod +x *.sh` in the `/usr/local/hestia/data/templates/web/apache2/php-fpm/` folder.
+```bash
+chmod +x /usr/local/hestia/data/templates/web/apache2/php-fpm/*.sh
+```
 - NGINX templates goes into `/usr/local/hestia/data/templates/web/nginx/`
+```bash
+mv nginx/* /usr/local/hestia/data/templates/web/nginx/
+```
 
-4. Activate the template NGINX proxy template
+4. In the "Webpanel" go to "Web" and "Edit Domain" do you want to change. Unter Advanced Options Select: 
 
-5. Activate the desired Apache2 template. It is recommended to set the backend template to `no-php`.
+- Web TemplateAPACHE2: Django_app
+- Backend Template PHP-FPM: no-php
+- Proxy Template: Django_proxy_pass
 
-6. Complete the setup process of the terminal. This includes setting up the database, adding the users, disabling the debug/setting environment to production, modifying the allowed hosts, and so on.
+Click on "Save" and wait
+
+5. Setup with SQLite und Allow Host is automatic, you can test now Config with your Domain in Browser
