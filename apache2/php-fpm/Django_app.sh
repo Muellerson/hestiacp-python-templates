@@ -20,7 +20,7 @@ virtualenv -p python3 venv
 source venv/bin/activate
 
 # Install Django and Gunicorn
-pip install django gunicorn psycopg2-binary
+pip install django==5.2 gunicorn psycopg2-binary
 
 # Create the Django project
 django-admin startproject djangoapp
@@ -39,7 +39,7 @@ cd djangoapp
 ./manage.py makemigrations && ./manage.py migrate
 chown $user:$user db.sqlite3
 # fix error for os
-sed -i '/from pathlib import/a import os' $workingfolder/djangoapp/djangoapp/settings.py
+sed -i '/from pathlib import Path/a import os' $workingfolder/djangoapp/djangoapp/settings.py
 # Add static folder and run collectstatic
 echo "
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')" >> $workingfolder/djangoapp/djangoapp/settings.py
