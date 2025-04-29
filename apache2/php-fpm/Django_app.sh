@@ -39,8 +39,7 @@ cd djangoapp
 ./manage.py makemigrations && ./manage.py migrate
 chown $user:$user db.sqlite3
 # fix error for os
-echo "
-import os" >> $workingfolder/djangoapp/djangoapp/settings.py
+sed -i '/from pathlib import/a import os' settings.py
 # Add static folder and run collectstatic
 echo "
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')" >> $workingfolder/djangoapp/djangoapp/settings.py
@@ -49,6 +48,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')" >> $workingfolder/djangoapp/dja
 
 # fix file authorization
 chown -R $user:$user /home/$user/web/$domain/djangoapp/
+
+# file anpassen um host hinzuzufügen
+sed -i 's/ALLOWED_HOSTS = \[\]/ALLOWED_HOSTS = ["'$domain'"]/g' settings.py
+
+
 
 # At this stage you can test that it works executing:
 # gunicorn -b 0.0.0.0:8000 djangoapp.wsgi:application
