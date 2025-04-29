@@ -4,7 +4,9 @@
 
 Python templates for [HestiaCP](https://www.hestiacp.com/).
 
-This project was originally based on the work done by [anton-bozhina](https://github.com/anton-bozhina) and [refsigregory](https://github.com/refsigregory/vestacp-python-template/commits?author=refsigregory). However, a new approach has been taken.
+This project is a Fork from [realjumy](https://github.com/realjumy/hestiacp-python-templates)
+
+His project was originally based on the work done by [anton-bozhina](https://github.com/anton-bozhina) and [refsigregory](https://github.com/refsigregory/vestacp-python-template/commits?author=refsigregory). However, a new approach has been taken.
 
 ## Disclaimer
 
@@ -15,7 +17,7 @@ This project was originally based on the work done by [anton-bozhina](https://gi
 ## Requirements
 
 - HestiaCP
-- Python 3.6.X (you can check your Python version using `python3 --version`)
+- Python 3.612.X (you can check your Python version using `python3 --version`)
 
 I presume it can be adapted to VestaCP after small modifications.
 
@@ -58,7 +60,7 @@ chmod +x /usr/local/hestia/data/templates/web/apache2/php-fpm/*.sh
 mv nginx/* /usr/local/hestia/data/templates/web/nginx/
 ```
 
-4. In the "Webpanel" go to "Web" and "Edit Domain" do you want to change. Unter Advanced Options Select: 
+4. In the "Webpanel" go to "Web" and "Edit Domain" do you want to change. Under Advanced Options Select: 
 
 - Web TemplateAPACHE2: Django_app
 - Backend Template PHP-FPM: no-php
