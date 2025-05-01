@@ -50,6 +50,9 @@ chmod 755 media
 chown $user:$user media
 python manage.py collectstatic
 
+# fix file authorization
+chown -R $user:$user /home/$user/web/$domain/cr_cms/
+
 # At this stage you can test that it works executing:
 # gunicorn -b 0.0.0.0:8000 cr_cms.wsgi:application
 # *after* adding your domain to ALLOWED_HOSTS
